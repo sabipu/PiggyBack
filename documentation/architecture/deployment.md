@@ -22,8 +22,8 @@ You can optionally run two instances: one for personal use with real bank data, 
 | Variable | Description |
 |----------|-------------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Personal Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Personal Supabase anon key |
-| `SUPABASE_SERVICE_ROLE_KEY` | Service role key (production/preview only) |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Personal Supabase publishable key |
+| `SUPABASE_SECRET_KEY` | Secret key (production/preview only) |
 | `UP_API_ENCRYPTION_KEY` | AES-256-GCM key for Up API token encryption |
 | `NEXT_PUBLIC_APP_URL` | Your Vercel URL (used for webhook registration) |
 | `NEXT_PUBLIC_SKIP_LANDING` | `true` — skips landing page, redirects authenticated users from `/` to `/home` |
@@ -33,7 +33,7 @@ You can optionally run two instances: one for personal use with real bank data, 
 | Variable | Description |
 |----------|-------------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Demo Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Demo Supabase anon key |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Demo Supabase publishable key |
 | `NEXT_PUBLIC_DEMO_MODE` | `true` — enables read-only demo mode |
 | `DEMO_USER_EMAIL` | Auto-login email for demo |
 | `DEMO_USER_PASSWORD` | Auto-login password for demo |

@@ -1,6 +1,6 @@
 import type { NextConfig } from "next";
 
-// CSP is set dynamically in middleware.ts with per-request nonces (see M2/M184 fixes).
+// CSP is set dynamically in proxy.ts with per-request nonces (see M2/M184 fixes).
 const securityHeaders = [
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "X-Frame-Options", value: "DENY" },

@@ -214,11 +214,11 @@ export default function DeployCloudPage() {
                   )
                 </li>
                 <li>
-                  <strong>anon/public</strong> key
+                  <strong>publishable</strong> key
                 </li>
                 <li>
-                  <strong>service_role</strong> key (click &quot;Reveal&quot; —
-                  keep this secret!)
+                  <strong>secret</strong> key (<code>sb_secret_...</code>) —
+                  keep this secret
                 </li>
               </ul>
             </li>
@@ -307,14 +307,14 @@ export default function DeployCloudPage() {
                 desc: "Your Supabase project URL",
               },
               {
-                var: "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+                var: "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
                 required: "Yes",
-                desc: "Your Supabase anon key",
+                desc: "Your Supabase publishable key",
               },
               {
-                var: "SUPABASE_SERVICE_ROLE_KEY",
+                var: "SUPABASE_SECRET_KEY",
                 required: "Yes",
-                desc: "Your Supabase service role key",
+                desc: "Your Supabase secret key",
               },
               {
                 var: "UP_API_ENCRYPTION_KEY",
@@ -377,14 +377,14 @@ export default function DeployCloudPage() {
                     desc: "Your Supabase project URL",
                   },
                   {
-                    var: "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+                    var: "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
                     required: "Yes",
-                    desc: "Your Supabase anon key",
+                    desc: "Your Supabase publishable key",
                   },
                   {
-                    var: "SUPABASE_SERVICE_ROLE_KEY",
+                    var: "SUPABASE_SECRET_KEY",
                     required: "Yes",
-                    desc: "Your Supabase service role key",
+                    desc: "Your Supabase secret key",
                   },
                   {
                     var: "UP_API_ENCRYPTION_KEY",

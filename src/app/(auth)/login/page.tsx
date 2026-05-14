@@ -74,6 +74,7 @@ export default function LoginPage() {
                 src="/PiggyBackIcon.png"
                 alt="PiggyBack"
                 fill
+                sizes="128px"
                 className="object-contain"
                 priority
               />

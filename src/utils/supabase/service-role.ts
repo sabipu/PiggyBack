@@ -1,5 +1,5 @@
 /**
- * Supabase Service Role Client
+ * Supabase elevated-privilege client
  * Bypasses RLS - use only for server-side operations that don't have user context
  * (e.g., webhook handlers, cron jobs)
  */
@@ -15,17 +15,17 @@ export function createServiceRoleClient() {
   }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const secretKey = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-  if (!supabaseUrl || !serviceRoleKey) {
+  if (!supabaseUrl || !secretKey) {
     throw new Error(
-      "Missing NEXT_PUBLIC_SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY environment variable"
+      "Missing NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SECRET_KEY or SUPABASE_SERVICE_ROLE_KEY environment variables"
     );
   }
 
   // Using 'any' for database types since we don't have generated types
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  serviceRoleClient = createClient<any>(supabaseUrl, serviceRoleKey, {
+  serviceRoleClient = createClient<any>(supabaseUrl, secretKey, {
     auth: {
       autoRefreshToken: false,
       persistSession: false,

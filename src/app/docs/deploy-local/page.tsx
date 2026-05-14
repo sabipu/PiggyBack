@@ -270,8 +270,8 @@ export default function DeployLocalPage() {
             </p>
             <p className="font-[family-name:var(--font-dm-sans)] text-sm text-text-secondary">
               Go to <strong>Settings</strong> &rarr; <strong>API</strong>. Note
-              your <strong>Project URL</strong>, <strong>anon key</strong>, and{" "}
-              <strong>service_role key</strong>.
+              your <strong>Project URL</strong>, <strong>publishable key</strong>, and{" "}
+              <strong>secret key</strong>.
             </p>
           </OptionCard>
 
@@ -294,7 +294,7 @@ supabase start`}</CodeBlock>
             <p className="font-[family-name:var(--font-dm-sans)] text-sm text-text-secondary">
               This pulls Docker images on first run (~2-5 minutes). Once
               running, you&apos;ll see output with your <strong>API URL</strong>,{" "}
-              <strong>anon key</strong>, and <strong>service_role key</strong>.
+              <strong>publishable key</strong>, and elevated server key.
               Copy these for the next step.
             </p>
 
@@ -343,16 +343,16 @@ cp .env.local.example .env.local`}</CodeBlock>
 
           <OptionCard option="A" color="blue">
             <CodeBlock title=".env.local">{`NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_from_dashboard
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_from_dashboard
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_key_from_dashboard
+SUPABASE_SECRET_KEY=your_secret_key_from_dashboard
 UP_API_ENCRYPTION_KEY=your_64_character_hex_key
 NEXT_PUBLIC_APP_URL=http://localhost:3000`}</CodeBlock>
           </OptionCard>
 
           <OptionCard option="B" color="green">
             <CodeBlock title=".env.local">{`NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_from_supabase_start
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_from_supabase_start
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_key_from_supabase_start
+SUPABASE_SECRET_KEY=your_elevated_key_from_supabase_start
 UP_API_ENCRYPTION_KEY=your_64_character_hex_key
 NEXT_PUBLIC_APP_URL=http://localhost:3000`}</CodeBlock>
           </OptionCard>

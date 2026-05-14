@@ -132,8 +132,8 @@ Required variables:
 | Variable | Description |
 |----------|-------------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase publishable/anon key |
-| `SUPABASE_SERVICE_ROLE_KEY` | Your Supabase service role key (Settings > API) |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Your Supabase publishable key |
+| `SUPABASE_SECRET_KEY` | Your Supabase secret key (server-side only, Settings > API Keys) |
 | `UP_API_ENCRYPTION_KEY` | 64-character hex key for encrypting stored Up API tokens (see `.env.local.example`) |
 | `NEXT_PUBLIC_APP_URL` | Your app URL (`http://localhost:3005` for local dev, `http://localhost:3000` for Docker/production) |
 

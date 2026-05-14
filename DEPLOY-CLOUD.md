@@ -43,8 +43,8 @@
 1. Go to **Settings** > **API**
 2. Copy these three values — you'll need them in Step 2:
    - **Project URL** (starts with `https://...supabase.co`)
-   - **anon/public** key
-   - **service_role** key (click "Reveal" — keep this secret!)
+   - **publishable** key
+   - **secret** key (`sb_secret_...`) — keep this secret
 
 ## Step 2: Deploy to Vercel
 
@@ -70,8 +70,8 @@ In your Vercel project, go to **Settings** > **Environment Variables** and add:
 | Variable | Value | Required |
 |----------|-------|----------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL | Yes |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anon key | Yes |
-| `SUPABASE_SERVICE_ROLE_KEY` | Your Supabase service role key | Yes |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Your Supabase publishable key | Yes |
+| `SUPABASE_SECRET_KEY` | Your Supabase secret key | Yes |
 | `UP_API_ENCRYPTION_KEY` | A 64-character hex string (see below) | Yes |
 | `NEXT_PUBLIC_APP_URL` | Your Vercel deployment URL | Yes |
 | `CRON_SECRET` | A random secret string (see below) | Recommended |

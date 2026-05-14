@@ -54,7 +54,7 @@ Pick one and follow the matching instructions below. You can switch later.
 **Get your keys:**
 
 1. Go to **Settings** > **API**
-2. Note your **Project URL**, **anon key**, and **service_role key**
+2. Note your **Project URL**, **publishable key**, and **secret key**
 
 ### Option B: Local Supabase
 
@@ -87,11 +87,11 @@ This pulls Docker images on first run (~2-5 minutes). Once running, you'll see o
   S3 Storage URL: http://127.0.0.1:54321/storage/v1/s3
           DB URL: postgresql://postgres:postgres@127.0.0.1:54322/postgres
       Studio URL: http://127.0.0.1:54323
-        anon key: eyJhbG...
+        publishable key: eyJhbG...
 service_role key: eyJhbG...
 ```
 
-**Copy the `anon key` and `service_role key`** — you'll need them in Step 2.
+**Copy the `publishable key` and elevated server key** — you'll need them in Step 2.
 
 The migration in `supabase/migrations/` is applied automatically when you start.
 
@@ -117,8 +117,8 @@ Edit `.env.local` with your values:
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=https://your-project-id.supabase.co
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_from_dashboard
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_from_dashboard
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_key_from_dashboard
+SUPABASE_SECRET_KEY=your_secret_key_from_dashboard
 UP_API_ENCRYPTION_KEY=your_64_hex_character_encryption_key
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
@@ -129,8 +129,8 @@ NEXT_PUBLIC_APP_URL=http://localhost:3000
 
 ```env
 NEXT_PUBLIC_SUPABASE_URL=http://127.0.0.1:54321
-NEXT_PUBLIC_SUPABASE_ANON_KEY=your_anon_key_from_supabase_start
-SUPABASE_SERVICE_ROLE_KEY=your_service_role_key_from_supabase_start
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your_publishable_key_from_supabase_start
+SUPABASE_SECRET_KEY=your_elevated_key_from_supabase_start
 UP_API_ENCRYPTION_KEY=your_64_hex_character_encryption_key
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```

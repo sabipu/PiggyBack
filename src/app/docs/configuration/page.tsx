@@ -71,14 +71,14 @@ export default function ConfigurationPage() {
                   default: "\u2014",
                 },
                 {
-                  var: "NEXT_PUBLIC_SUPABASE_ANON_KEY",
-                  desc: "Supabase anon/public key",
+                  var: "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY",
+                  desc: "Supabase publishable key",
                   required: "Yes",
                   default: "\u2014",
                 },
                 {
-                  var: "SUPABASE_SERVICE_ROLE_KEY",
-                  desc: "Supabase service role key (server-side only)",
+                  var: "SUPABASE_SECRET_KEY",
+                  desc: "Supabase secret key (server-side only)",
                   required: "Yes",
                   default: "\u2014",
                 },

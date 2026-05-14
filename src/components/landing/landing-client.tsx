@@ -281,7 +281,7 @@ export function LandingClient({ feature }: LandingClientProps) {
             lines={[
               "# Create project at supabase.com",
               "# Run migrations in SQL Editor",
-              "# Copy URL + anon key to .env.local",
+              "# Copy URL + publishable key to .env.local",
             ]}
             title="terminal"
             className="mb-3 max-w-xs mx-auto"

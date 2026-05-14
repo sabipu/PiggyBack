@@ -211,7 +211,7 @@ The application uses four distinct Supabase client types, each suited to a diffe
 
 ### 3. Service Role Client (`src/utils/supabase/service-role.ts`)
 
-- Created with `createClient()` from `@supabase/supabase-js` using `SUPABASE_SERVICE_ROLE_KEY`
+- Created with `createClient()` from `@supabase/supabase-js` using `SUPABASE_SECRET_KEY`
 - Bypasses RLS entirely -- used for operations without user context
 - Use cases: webhook handlers (UP Bank events arrive without a user session), admin operations
 - Singleton pattern: client is cached and reused across requests
@@ -297,7 +297,7 @@ PiggyBack uses no global state library. Data flows through React Server Componen
 | Variable | Description |
 |----------|-------------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL (e.g., `https://xxx.supabase.co`) |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase anonymous/public key for RLS-protected queries |
+| `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` | Supabase publishable key for RLS-protected queries |
 | `NEXT_PUBLIC_APP_URL` | Application URL used for auth redirects and links |
 | `NEXT_PUBLIC_DEMO_MODE` | Enable demo mode (`"true"` or `"false"`). Blocks mutations and auto-signs in with demo credentials. |
 | `NEXT_PUBLIC_SKIP_LANDING` | Skip the landing page (`"true"` or `"false"`). When enabled, authenticated users are redirected from `/` to `/home`. |
@@ -306,7 +306,7 @@ PiggyBack uses no global state library. Data flows through React Server Componen
 
 | Variable | Description |
 |----------|-------------|
-| `SUPABASE_SERVICE_ROLE_KEY` | Service role key for admin database access (bypasses RLS) |
+| `SUPABASE_SECRET_KEY` | Secret key for admin database access (bypasses RLS) |
 | `DEMO_USER_EMAIL` | Email for demo mode auto-login |
 | `DEMO_USER_PASSWORD` | Password for demo mode auto-login |
 | `WEBHOOK_BASE_URL` | Base URL for registering UP Bank webhook endpoints |

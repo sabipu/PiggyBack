@@ -75,6 +75,7 @@ export default function ForgotPasswordPage() {
                 src="/PiggyBackIcon.png"
                 alt="PiggyBack"
                 fill
+                sizes="96px"
                 className="object-contain"
                 priority
               />

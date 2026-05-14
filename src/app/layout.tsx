@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { headers } from "next/headers";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -15,7 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL;
+const metadataBase = new URL(
+  appUrl ? (appUrl.startsWith("http") ? appUrl : `https://${appUrl}`) : "http://localhost:3005"
+);
+
 export const metadata: Metadata = {
+  metadataBase,
   title: "PiggyBack",
   description:
     "Your finances on autopilot with Up Bank. Auto-syncing transactions, budgets, savings goals, and a 25-tool AI assistant. Self-hosted on Vercel + Supabase. MIT licensed.",
@@ -58,10 +63,8 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const nonce = (await headers()).get("x-nonce") ?? "";
-
   return (
-    <html lang="en" nonce={nonce}>
+    <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

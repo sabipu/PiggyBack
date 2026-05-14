@@ -70,7 +70,7 @@ npm install`}</CodeBlock>
             <div className="ml-0 sm:ml-11 space-y-3">
               <CodeBlock title="terminal">{`cp .env.local.example .env.local`}</CodeBlock>
               <p className="font-[family-name:var(--font-dm-sans)] text-sm text-text-secondary">
-                Fill in your Supabase project URL, anon key, and a 64-character
+                Fill in your Supabase project URL, publishable key, and a 64-character
                 hex encryption key (32 bytes). See the{" "}
                 <a
                   href="https://github.com/BenLaurenson/PiggyBack#getting-started"

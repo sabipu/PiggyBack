@@ -6,6 +6,57 @@
 -- Uses ON CONFLICT to be safe for databases that already have mappings
 -- (e.g. from the demo seed script).
 
+-- Ensure the referenced Up Bank categories exist before inserting mappings.
+INSERT INTO public.categories (id, name, parent_category_id) VALUES
+  ('good-life', 'Good Life', NULL),
+  ('home', 'Home', NULL),
+  ('personal', 'Personal', NULL),
+  ('transport', 'Transport', NULL)
+ON CONFLICT (id) DO NOTHING;
+
+INSERT INTO public.categories (id, name, parent_category_id) VALUES
+  ('restaurants-and-cafes', 'Restaurants & Cafes', 'good-life'),
+  ('takeaway', 'Takeaway', 'good-life'),
+  ('pubs-and-bars', 'Pubs & Bars', 'good-life'),
+  ('booze', 'Booze', 'good-life'),
+  ('holidays-and-travel', 'Holidays & Travel', 'good-life'),
+  ('hobbies', 'Hobbies', 'good-life'),
+  ('tv-and-music', 'TV, Music & Streaming', 'good-life'),
+  ('games-and-software', 'Apps, Games & Software', 'good-life'),
+  ('events-and-gigs', 'Events & Gigs', 'good-life'),
+  ('tobacco-and-vaping', 'Tobacco & Vaping', 'good-life'),
+  ('lottery-and-gambling', 'Lottery & Gambling', 'good-life'),
+  ('adult', 'Adult', 'good-life'),
+  ('groceries', 'Groceries', 'home'),
+  ('rent-and-mortgage', 'Rent & Mortgage', 'home'),
+  ('utilities', 'Utilities', 'home'),
+  ('internet', 'Internet', 'home'),
+  ('home-insurance-and-rates', 'Rates & Insurance', 'home'),
+  ('homeware-and-appliances', 'Homeware & Appliances', 'home'),
+  ('home-maintenance-and-improvements', 'Maintenance & Improvements', 'home'),
+  ('pets', 'Pets', 'home'),
+  ('health-and-medical', 'Health & Medical', 'personal'),
+  ('fitness-and-wellbeing', 'Fitness & Wellbeing', 'personal'),
+  ('hair-and-beauty', 'Hair & Beauty', 'personal'),
+  ('clothing-and-accessories', 'Clothing & Accessories', 'personal'),
+  ('gifts-and-charity', 'Gifts & Charity', 'personal'),
+  ('education-and-student-loans', 'Education & Student Loans', 'personal'),
+  ('mobile-phone', 'Mobile Phone', 'personal'),
+  ('technology', 'Technology', 'personal'),
+  ('life-admin', 'Life Admin', 'personal'),
+  ('news-magazines-and-books', 'News, Magazines & Books', 'personal'),
+  ('investments', 'Investments', 'personal'),
+  ('family', 'Children & Family', 'personal'),
+  ('fuel', 'Fuel', 'transport'),
+  ('parking', 'Parking', 'transport'),
+  ('public-transport', 'Public Transport', 'transport'),
+  ('car-insurance-and-maintenance', 'Car Insurance, Rego & Maintenance', 'transport'),
+  ('car-repayments', 'Repayments', 'transport'),
+  ('taxis-and-share-cars', 'Taxis & Share Cars', 'transport'),
+  ('toll-roads', 'Tolls', 'transport'),
+  ('cycling', 'Cycling', 'transport')
+ON CONFLICT (id) DO NOTHING;
+
 INSERT INTO public.category_mappings (up_category_id, new_parent_name, new_child_name, icon, display_order) VALUES
   ('groceries', 'Food & Dining', 'Groceries', '🛒', 1),
   ('rent-and-mortgage', 'Housing & Utilities', 'Rent & Mortgage', '🏠', 2),

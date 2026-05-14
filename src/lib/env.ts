@@ -2,7 +2,9 @@ import { z } from "zod/v4";
 
 const envSchema = z.object({
   NEXT_PUBLIC_SUPABASE_URL: z.url(),
-  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1),
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY: z.string().min(1).optional(),
+  NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1).optional(),
+  SUPABASE_SECRET_KEY: z.string().min(1).optional(),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1).optional(),
   UP_API_ENCRYPTION_KEY: z
     .string()
@@ -10,6 +12,14 @@ const envSchema = z.object({
     .regex(/^[0-9a-f]+$/i, "Must be a 64-character hex string")
     .optional(),
   CRON_SECRET: z.string().min(1).optional(),
+}).superRefine((env, ctx) => {
+  if (!env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY && !env.NEXT_PUBLIC_SUPABASE_ANON_KEY) {
+    ctx.addIssue({
+      code: "custom",
+      path: ["NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY"],
+      message: "Required when NEXT_PUBLIC_SUPABASE_ANON_KEY is not set",
+    });
+  }
 });
 
 export function validateEnv() {
