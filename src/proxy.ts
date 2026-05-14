@@ -2,17 +2,25 @@ import { type NextRequest } from "next/server";
 import { updateSession } from "@/utils/supabase/middleware";
 
 export async function proxy(request: NextRequest) {
-  // Generate a per-request nonce for CSP (M2: replaces unsafe-inline)
-  const nonce = Buffer.from(crypto.randomUUID()).toString("base64");
   const isDev = process.env.NODE_ENV === "development";
+  const scriptSources = [
+    "'self'",
+    "'unsafe-inline'",
+    "https://vercel.live",
+    "https://va.vercel-scripts.com",
+    "https://cdn.vercel-insights.com",
+    ...(isDev ? ["'unsafe-eval'"] : []),
+  ].join(" ");
 
   const cspDirectives = [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic' https://vercel.live${isDev ? " 'unsafe-eval'" : ""}`,
+    `script-src ${scriptSources}`,
+    `script-src-elem ${scriptSources}`,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     "img-src 'self' data: blob: https:",
-    `connect-src 'self' ${process.env.NEXT_PUBLIC_SUPABASE_URL || ""} https://*.supabase.co wss://*.supabase.co https://generativelanguage.googleapis.com https://api.openai.com https://api.anthropic.com https://vercel.live`,
+    `connect-src 'self' ${process.env.NEXT_PUBLIC_SUPABASE_URL || ""} https://*.supabase.co wss://*.supabase.co https://generativelanguage.googleapis.com https://api.openai.com https://api.anthropic.com https://vercel.live https://*.vercel-insights.com https://*.vercel-analytics.com`,
+    "frame-src 'self' https://vercel.live",
     "object-src 'none'",       // M184: block plugin-based content
     "base-uri 'self'",         // M184: restrict <base> element
     "frame-ancestors 'none'",  // M184: prevent framing
@@ -21,7 +29,6 @@ export async function proxy(request: NextRequest) {
   const cspHeaderValue = cspDirectives.join("; ");
 
   const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("Content-Security-Policy", cspHeaderValue);
 
   const response = await updateSession(request, requestHeaders);
